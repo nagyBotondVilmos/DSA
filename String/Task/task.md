@@ -23,3 +23,5 @@ The pattern can only contain lowercase and uppercase letters of the English alph
 7 10
 
 # Maximum execution time: 1 second
+
+[Back](../readme.md)

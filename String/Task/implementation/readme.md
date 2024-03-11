@@ -50,3 +50,5 @@ time ./sgrep <-p{Abraham}> <-f{bible.txt}>
 The `grep` program is much faster than the `sgrep` program, especially when searching for longer strings in large texts.
 My implementation of the Boyer-Moore algorithm is not the most efficient, but it is still much faster than the naive string search algorithm.
 I hope you enjoy using the programs!
+
+[Back](../../readme.md)

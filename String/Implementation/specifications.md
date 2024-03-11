@@ -126,3 +126,5 @@ Postconditions: Successful reading
 Reads until a newline character from the specified stream
 Preconditions: -
 Postconditions: Successful reading
+
+[Back](../readme.md)
