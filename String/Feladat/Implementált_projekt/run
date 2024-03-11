@@ -1,0 +1,99 @@
+#!/bin/bash
+
+if [ $# -lt 1 ];
+then
+    echo "C/C++ compiler, linker and runner"
+    echo "	      by Nagy Botond-Vilmos"
+    echo ""
+    echo "Usage: r <file1.c(pp)> [<file2.c(pp)> ...]"
+    exit 0
+fi
+
+echo "Compiling..."
+
+torun=1
+if [ "$1" == "-c" ];
+then
+    torun=0
+    shift
+fi
+
+#check if c or cpp
+if [[ $1 == *.cpp ]];
+then
+    program_name=$(basename "$1" .cpp)
+
+    for file in "$@";
+    do
+        g++ -c "$file" -o "$(basename "$file" .cpp).o"
+        if [ $? -ne 0 ];
+        then
+            echo "Compilation failed"
+    	rm *.o
+            exit 1
+        fi
+    done
+
+    echo "Linking..."
+
+    g++ *.o -o $program_name
+    if [ $? -ne 0 ];
+    then
+        echo "Linking failed"
+        exit 1
+    fi
+    rm *.o
+
+    if [ $torun -eq 0 ];
+    then
+	echo "$program_name ready to run."
+        exit 0
+    fi
+
+    clear
+    echo $program_name:
+
+    ./$program_name
+
+    rm $program_name
+
+else
+    program_name=$(basename "$1" .c)
+
+    for file in "$@";
+    do
+        gcc -c "$file" -o "$(basename "$file" .c).o"
+        if [ $? -ne 0 ];
+        then
+            echo "Compilation failed"
+        rm *.o
+            exit 1
+        fi
+    done
+
+    echo "Linking..."
+
+    gcc *.o -o $program_name
+
+    if [ $? -ne 0 ];
+    then
+        echo "Linking failed"
+        exit 1
+    fi
+    rm *.o
+
+    if [ $torun -eq 0 ];
+    then
+	echo "$program_name ready to run"
+        exit 0
+    fi
+
+    clear
+    echo $program_name:
+
+    ./$program_name
+
+    rm $program_name
+fi
+
+exit 0
