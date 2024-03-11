@@ -5,3 +5,4 @@ Nagy Botond-Vilmos
 This repository is created in order to show my knowledge in OOP and the application of algorithms in data structures.
 
 # Content
+- [String](String/readme.md)
