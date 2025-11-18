@@ -2,7 +2,7 @@
 Nagy Botond-Vilmos
 
 # Description
-This file contains the specifications of my implementation of the string data structure in C++.
+This file contains the specifications of my implementation of the string data structure enhanced with Boyer-Moore string search algorithm, implemented in C++.
 
 # Specifications
 Character strings are arrays of characters that allow storing a sequence of characters in a single array.
